@@ -1,13 +1,23 @@
 import matplotlib.pyplot as plt
+from matplotlib.figure import Figure
 import requests
+from typing import Dict, List, Union
 
+def plot_palette(model: str) -> Figure:
+    """
+        Gives us 
+        args: 
+            Model (str): which model to use, see http://colormind.io/api/ for options
 
-def plot_palette(model):
+        returns: 
+            axes.SubplotBase object corresponding to 
+    """
     if model not in {"default", "ui"}:
         raise ValueError(f"{model} is not supported.")
 
     data = f'{{"model": "{model}"}}'
 
+    # Documentation on the colormind api http://colormind.io/api-access/
     response = requests.post("http://colormind.io/api/", data=data)
     palette = response.json()
 
