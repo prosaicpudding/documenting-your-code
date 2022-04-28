@@ -1,11 +1,10 @@
 import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 import requests
-from typing import Dict, List, Union
 
 def plot_palette(model: str) -> Figure:
     """
-        Gives us 
+        Gives us a matplot lib figure from colormind.io
         args: 
             Model (str): which model to use, see http://colormind.io/api/ for options
 
