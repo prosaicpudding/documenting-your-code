@@ -5,11 +5,11 @@ import requests
 def plot_palette(model: str) -> Figure:
     """
         Gives us a matplot lib figure from colormind.io
-        args: 
+        parameters: 
             Model (str): which model to use, see http://colormind.io/api/ for options
 
         returns: 
-            axes.SubplotBase object corresponding to 
+            Figure: The firgure returned by the api
     """
     if model not in {"default", "ui"}:
         raise ValueError(f"{model} is not supported.")
@@ -23,6 +23,7 @@ def plot_palette(model: str) -> Figure:
     fig, axs = plt.subplots(figsize=(10, 2), nrows=1, ncols=5)
 
     for idx, color in enumerate(palette["result"]):
+        # converts bits to 0-1 scalar
         color_decimal = [val / 256 for val in color]
         axs[idx].set_facecolor(color_decimal)
 
